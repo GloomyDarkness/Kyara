@@ -65,18 +65,22 @@ module.exports = class extends Event {
                     const filter = m => m.author.id === interaction.user.id
 
                     interaction.update({})
-                    interaction.channel.send('Insira a quantia de dias que a pessoa tem que ter para entrar no servidor').then(msg => {
+                    interaction.channel.send('Insira a quantia de dias que a pessoa tem que ter para entrar no servidor\nObs: os números devem ser inteiros, caso contrário o resultado será aproximado.').then(msg => {
                         setTimeout(() => msg.delete(), 15000)
                     })
 
                     const collector = interaction.channel.createMessageCollector({ filter, max: 1, time: 15000 })
 
                     collector.on('collect', l => {
-                        console.log(l.content)
 
-                        if (!l.content.isNaN) console.log('n é numero')
+                        if (!l.content.isNaN) return interaction.channel.send('Tente novamente inserindo um NÚMERO').then(msg => {
+                            setTimeout(() => msg.delete(), 10000)
 
-                        l.delete()
+                            let dias = ~~l.content
+
+                            l.delete()
+
+                        })
 
                     })
                     collector.on('end', (c, r) => {
