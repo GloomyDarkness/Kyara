@@ -6,7 +6,7 @@ module.exports = async (client, interaction) => {
         .setCustomId('antibot-on')
         .setLabel('ativar')
         .setStyle('SUCCESS')
-
+        
     const button2 = new MessageButton()
         .setCustomId('antibot-off')
         .setLabel('desativar')
