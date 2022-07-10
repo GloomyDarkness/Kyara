@@ -18,7 +18,7 @@ var http = require('http'); http.createServer(function (req, res) { res.write("B
 
  process.on(`multipleResolves`, (type, reason, promise) => {
      console.log(`erro detectado\n\n` + type, promise, reason)
- })
+ }) 
  process.on(`unhandRejection`, (reason, promise) => {
      console.log(`erro detectado\n\n` + reason, promise)
  })
