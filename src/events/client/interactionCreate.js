@@ -77,6 +77,10 @@ module.exports = class extends Event {
                             setTimeout(() => msg.delete(), 10000)
 
                             let dias = ~~l.content
+                            server.antibot.days = dias
+                            server.markModifided('antibot')
+                            server.save()
+                            interaction.channel.send('Sucesso! Dias definidos em ' + server.antibot.days + ' dias').then(msg => { setTimeout(() => msg.delete(), 10000) })
 
                             l.delete()
 
