@@ -1,6 +1,7 @@
 const Event = require('../../structures/Event')
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, WebhookClient } = require('discord.js');
 const { guilds } = require('../../database/models/Models')
+const webhookClient = new WebhookClient({ id: webhook_id, token: webhook_token });
 
 module.exports = class extends Event {
     constructor(client) {
@@ -11,7 +12,7 @@ module.exports = class extends Event {
 
     run = async (member) => {
 
-        let server = (await guilds.findById(member.guild.id)) || new guilds({_id: member.guild.id})
+        let server = (await guilds.findById(member.guild.id)) || new guilds({ _id: member.guild.id })
 
         if (server.antibot.activated = true) {
             const time = ~~((Date.now() - member.user.createdTimestamp) / (1000 * 3600 * 24))
@@ -26,7 +27,9 @@ module.exports = class extends Event {
                     .setDescription(`Olá 👋 Sou o sistema de Anti-Bot do RedeShiwu!\n> Você deve estar se perguntando \`por que não consegui entrar?\`\n\nVou explicar para você, nós da equipe do RedeShiwu prezamos muito pela proteção do nosso servidor, e a sua conta é muito nova no discord! você precisa de pelo menos \`${server.antibot.days}\` dias de conta, e você tem apenas \`${time}\` dias \n\nCaso aconteça algum engano mande pedido de amizade para:
                     \`! Darkness#4128\``)
 
-                    return member?.send({ embeds: [embed] }).catch(() => console.log("DM bloqueada"))
+                return member?.send({ embeds: [embed] }).catch(() => console.log("DM bloqueada"))
+
+                
 
             }
         }

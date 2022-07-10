@@ -4,21 +4,26 @@ module.exports = async (client, interaction) => {
 
     const button = new MessageButton()
         .setCustomId('antibot-on')
-        .setLabel('ativar')
+        .setLabel('Ativar')
         .setStyle('SUCCESS')
 
     const button2 = new MessageButton()
         .setCustomId('antibot-off')
-        .setLabel('desativar')
+        .setLabel('Desativar')
         .setStyle('DANGER')
 
     const button3 = new MessageButton()
         .setCustomId('dias')
-        .setLabel('tempo')
+        .setLabel('Tempo')
         .setStyle('PRIMARY')
 
+    const button4 = new MessageButton()
+        .setCustomId('webhook')
+        .setLabel('Logs')
+        .setStyle('SECONDARY')
+
     let row = new MessageActionRow()
-        .addComponents(button, button2, button3)
+        .addComponents(button, button2, button3, button4)
 
     let embed = new MessageEmbed()
         .setTitle('Kyara Menu')

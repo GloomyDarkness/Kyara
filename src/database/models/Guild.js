@@ -9,7 +9,8 @@ const guildSchema = new Schema({
     },
     antibot: {
         activated: Boolean,
-        days: Number
+        days: Number,
+        url: String
     }
 })
 
