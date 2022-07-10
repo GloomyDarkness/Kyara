@@ -6,7 +6,7 @@ module.exports = async (client, interaction) => {
 
     const role = interaction.options.getRole('role')
 
-    if (interaction.member.roles.highest.position <= role.position) return interaction.reply({ content: 'Você não pode adicionar cargo à pessoas maiores que o seu cargo', ephemeral: true })
+    if (interaction.member.roles.highest.position <= role.position) return interaction.reply({ content: 'O cargo que você está tentando inserir é maior que o seu.', ephemeral: true })
 
     if (interaction.guild.me.roles.highest.position <= role.position) return interaction.reply({ content: 'Não consigo adicionar cargos maiores que o meu', ephemeral: true })
 
