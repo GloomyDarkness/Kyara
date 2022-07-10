@@ -11,7 +11,7 @@ module.exports = class extends Event {
 
     run = async (member) => {
 
-        let server = (await guilds.findById(member.guild.id))
+        let server = (await guilds.findById(member.guild.id)) || new guilds({_id: interaction.guild.id})
 
         if (server.antibot.activated = true) {
             const time = ~~((Date.now() - member.user.createdTimestamp) / (1000 * 3600 * 24))
