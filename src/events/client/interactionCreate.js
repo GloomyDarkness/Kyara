@@ -26,7 +26,7 @@ module.exports = class extends Event {
                 case 'antibot-on':
 
 
-                    if (server?.antibot.activated === true) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de anti-botjá está ativado' }).then(msg => {
+                    if (server?.antibot.activated === true) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de anti-bot já está ativado' }).then(msg => {
                         setTimeout(() => msg.delete(), 10000)
                     })
 
@@ -34,7 +34,7 @@ module.exports = class extends Event {
                     server.markModified('antibot')
                     server.save()
                     interaction.update({})
-                    interaction.channel.send({ content: '<a:concluido:795402598345474108> sistema de anti-botativo com `sucesso`.' }).then(msg => {
+                    interaction.channel.send({ content: '<a:concluido:795402598345474108> sistema de anti-bot ativado com `sucesso`.' }).then(msg => {
                         setTimeout(() => msg.delete(), 10000)
                     })
 
@@ -42,7 +42,7 @@ module.exports = class extends Event {
 
                 case 'antibot-off':
 
-                    if (server?.antibot.activated === false) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de anti-botjá está desativado' }).then(msg => {
+                    if (server?.antibot.activated === false) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de anti-bot já está desativado' }).then(msg => {
                         setTimeout(() => msg.delete(), 10000)
                     })
 
@@ -50,7 +50,7 @@ module.exports = class extends Event {
                     server.markModified('antibot')
                     server.save()
                     interaction.update({})
-                    interaction.channel.send({ content: '<a:concluido:795402598345474108> sistema de anti-botdesativado com `sucesso`.' }).then(msg => {
+                    interaction.channel.send({ content: '<a:concluido:795402598345474108> sistema de anti-bot desativado com `sucesso`.' }).then(msg => {
                         setTimeout(() => msg.delete(), 10000)
                     })
 
@@ -58,7 +58,7 @@ module.exports = class extends Event {
 
                 case 'dias':
 
-                    if (server?.antibot.activated === false || !server.antibot.activated) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de anti-botestá `desativado`, ative-o primeiro antes de definir a quantia de dias.' }).then(msg => {
+                    if (server?.antibot.activated === false || !server.antibot.activated) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de anti-bot está `desativado`, ative-o primeiro antes de definir a quantia de dias.' }).then(msg => {
                         setTimeout(() => msg.delete(), 10000)
                     })
 
@@ -96,6 +96,38 @@ module.exports = class extends Event {
                     })
 
                     break;
+
+                    case 'welcome-on':
+
+
+                        if (server?.welcome.activated === true) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de boas-vindas já está ativado' }).then(msg => {
+                            setTimeout(() => msg.delete(), 10000)
+                        })
+    
+                        server.welcome.activated = true
+                        server.markModified('welcome')
+                        server.save()
+                        interaction.update({})
+                        interaction.channel.send({ content: '<a:concluido:795402598345474108> sistema de boas-vindas ativado com `sucesso`.' }).then(msg => {
+                            setTimeout(() => msg.delete(), 10000)
+                        })
+    
+                        break;
+
+                        case 'welcome-off':
+
+                            if (server?.welcome.activated === false) return interaction.update({}) && interaction.channel.send({ content: '<:erradissimo:800148953613205534> O sistema de boas-vindas já está desativado' }).then(msg => {
+                                setTimeout(() => msg.delete(), 10000)
+                            })
+        
+                            server.welcome.activated = false
+                            server.markModified('welcome')
+                            server.save()
+                            interaction.update({})
+                            interaction.channel.send({ content: '<a:concluido:795402598345474108> sistema de boas-vindas desativado com `sucesso`.' }).then(msg => {
+                                setTimeout(() => msg.delete(), 10000)
+                            })
+
             }
         }
     }
