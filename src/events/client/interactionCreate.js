@@ -73,22 +73,24 @@ module.exports = class extends Event {
 
                     collector.on('collect', l => {
 
-                        if (!l.content.isNaN) return interaction.channel.send('Tente novamente inserindo um NÚMERO').then(msg => {
+                        let a = parseInt(l.content)
+
+                        if (a === NaN) return interaction.channel.send('Tente novamente inserindo um NÚMERO').then(msg => {
                             setTimeout(() => msg.delete(), 10000)
-
-                            let dias = ~~l.content
-                            server.antibot.days = dias
-                            server.markModifided('antibot')
-                            server.save()
-                            interaction.channel.send('Sucesso! Dias definidos em ' + server.antibot.days + ' dias').then(msg => { setTimeout(() => msg.delete(), 10000) })
-
-                            l.delete()
-
                         })
+                    
+                        let dias = ~~l.content
+                        server.antibot.days = dias
+                        server.markModified('antibot')
+                        server.save()
+                        interaction.channel.send('Sucesso! Dias definidos em ' + server.antibot.days + ' dias').then(msg => { setTimeout(() => msg.delete(), 10000) })
+
+                        l.delete()
 
                     })
+
                     collector.on('end', (c, r) => {
-                        if (r === 'time') interaction.channel.send({ content: 'Tempo esgotado.' }).then(msg => {
+                        if (r === 'time') interaction.channel.send({ content: '<:clokc:794256570460143616> Tempo `esgotado`.' }).then(msg => {
                             setTimeout(() => msg.delete(), 10000)
                         })
                     })
