@@ -16,8 +16,6 @@ module.exports = async (client, interaction) => {
     interaction.reply({ content: 'Adicionando o cargo a ' + membersArray.size + ' pessoas, aguarde pois pode demorar um pouco.', ephemeral: true })
 
     for (const member of membersArray) {
-
-        console.log(member[1].roles.size)
         await delay(delaye);
         await member[1].roles.add(role.id);
     }

@@ -1,7 +1,6 @@
 const Event = require('../../structures/Event')
 const { MessageEmbed, WebhookClient } = require('discord.js');
 const { guilds } = require('../../database/models/Models')
-const webhookClient = new WebhookClient({ id: webhook_id, token: webhook_token });
 
 module.exports = class extends Event {
     constructor(client) {
@@ -29,7 +28,7 @@ module.exports = class extends Event {
 
                 return member?.send({ embeds: [embed] }).catch(() => console.log("DM bloqueada"))
 
-                
+
 
             }
         }
