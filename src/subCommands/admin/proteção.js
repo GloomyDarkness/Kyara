@@ -27,7 +27,7 @@ module.exports = async (client, interaction) => {
 
     let embed = new MessageEmbed()
         .setTitle('Kyara Menu')
-        .setDescription(`\`•\` Olá, seja bem vindo ao menu de \`proteção\` da Kyara! <:winkk:795332180473544714>\n\n <a:concluido:795402598345474108> Ofereço à você o sistema de proteção de \`Anti-Bot\`\n\n\`\`\`Configure do jeito que você deseja!\`\`\`\n\nO sistema consiste em **você definir** quantos dias as contas devem ter para entrar em seu servidor, evitando por exemplo aquelas pessoa divulgando link no pv de seus membros!\n\n> Utilize os botões abaixo para fazer a configuração!\n> <a:setaaa:796075080542584912> o tempo deverá ser inserido em dias.\n> <a:setaaa:796075080542584912> o botão "Logs" é por wehook, enviando uma mensagem quando alguém tenta entrar e é barrado pelo antibot.`)
+        .setDescription(`\`•\` Olá, seja bem vindo ao menu de \`proteção\` da Kyara! <:winkk:795332180473544714>\n\n <a:concluido:795402598345474108> Ofereço à você o sistema de proteção de \`Anti-Bot\`\n\n\`\`\`Configure do jeito que você deseja!\`\`\`\n\n <:AlliancePNG:808738469773049957> O sistema consiste em **você definir** quantos dias as contas devem ter para entrar em seu servidor, evitando por exemplo aquelas pessoa divulgando link no pv de seus membros!\n\n> Utilize os botões abaixo para fazer a configuração!\n> <a:setaaa:796075080542584912> o tempo deverá ser inserido em dias.\n> <a:setaaa:796075080542584912> o botão "Logs" é por wehook, enviando uma mensagem quando alguém tenta entrar e é barrado pelo antibot.`)
         .setImage('https://i.imgur.com/FfeUjSb.gif')
         .setColor('RED')
 
