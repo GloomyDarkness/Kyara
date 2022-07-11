@@ -15,12 +15,12 @@ module.exports = async (client, interaction) => {
 
     interaction.reply({ content: 'Adicionando o cargo a ' + membersArray.size + ' pessoas, aguarde pois pode demorar um pouco.', ephemeral: true })
 
-    await newFunction();
+    await addRole();
 
     interaction.editReply(`✅ Sucesso! os cargos foram adicionado à ${membersArray.size} pessoas!`)
 
 
-    async function newFunction() {
+    async function addRole() {
         for (const member of membersArray) {
             await delay(delaye);
             await member[1].roles.add(role.id);
