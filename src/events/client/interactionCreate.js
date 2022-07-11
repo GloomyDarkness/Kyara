@@ -80,6 +80,12 @@ module.exports = class extends Event {
                             setTimeout(() => msg.delete(), 10000)
                         })
 
+                        l.delete()
+
+                        if (a <= 0) return interaction.channel.send('Tente novamente inserindo um NÚMERO VÁLIDO').then(msg => {
+                            setTimeout(() => msg.delete(), 10000)
+                        })
+
                         let dias = ~~l.content
                         server.antibot.days = dias
                         server.markModified('antibot')
@@ -132,8 +138,12 @@ module.exports = class extends Event {
 
                 case 'webhook':
 
-                    let filterr = m => m.author.id === interaction.user.id
+                    interaction.update({})
+                    interaction.channel.send('Mencione um canal de texto').then(msg => {
+                        setTimeout(() => msg.delete(), 10000)
+                    })
 
+                    let filterr = m => m.author.id === interaction.user.id
                     const channelCollector = interaction.channel.createMessageCollector({ filterr, max: 1, time: 15000 })
 
                     channelCollector.on('collect', l => {

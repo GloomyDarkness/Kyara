@@ -31,6 +31,6 @@ module.exports = async (client, interaction) => {
         .setImage('https://i.imgur.com/FfeUjSb.gif')
         .setColor('RED')
 
-    interaction.reply({ embeds: [embed], components: [row] })
+    interaction.reply({ embeds: [embed], components: [row], ephemeral: true })
 
 }   
