@@ -1,6 +1,5 @@
 const Event = require('../../structures/Event')
 const delay = ms => new Promise(res => setTimeout(res, ms));
-const { WebhookClient } = require('discord.js')
 const { guilds } = require("../../database/models/Models")
 
 module.exports = class extends Event {
@@ -97,7 +96,7 @@ module.exports = class extends Event {
                     })
 
                     collector.on('end', (c, r) => {
-                        if (r === 'time') interaction.channel.send({ content: '<:clokc:794256570460143616> Tempo `esgotado`.' }).then(msg => {
+                        if (r === 'time') interaction.channel.send({ content: '<:relo:996105619394285588> Tempo `esgotado`.' }).then(msg => {
                             setTimeout(() => msg.delete(), 10000)
                         })
                     })
@@ -152,7 +151,7 @@ module.exports = class extends Event {
                     })
 
                     channelCollector.on('end', (c, r) => {
-                        if (r === 'time') interaction.channel.send({ content: '<:clokc:794256570460143616> Tempo `esgotado`.' }).then(msg => {
+                        if (r === 'time') interaction.channel.send({ content: '<:relo:996105619394285588> Tempo `esgotado`.' }).then(msg => {
                             setTimeout(() => msg.delete(), 10000)
                         })
                     })
