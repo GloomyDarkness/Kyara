@@ -8,8 +8,8 @@ module.exports = class extends Command {
         })
     }
 
-    run = (interaction) => {
-        interaction.reply({
+    run = (ctx) => {
+        ctx.sendMessage({
             content: `Pong! \`${this.client.ws.ping}\`ms`,
             ephemeral: true
         })

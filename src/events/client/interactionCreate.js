@@ -1,6 +1,7 @@
 const Event = require('../../structures/Event')
 const delay = ms => new Promise(res => setTimeout(res, ms));
 const { guilds } = require("../../database/models/Models")
+const CommandContext = require('../../structures/CommandContext')
 
 module.exports = class extends Event {
     constructor(client) {
@@ -18,7 +19,7 @@ module.exports = class extends Event {
             if (!interaction.guild) return
             const cmd = this.client.commands.find(c => c.name === interaction.commandName)
             if (cmd) {
-                cmd.run(interaction)
+                cmd.run(new CommandContext(interaction))
             }
         } else if (interaction.isButton()) {
             switch (interaction.customId) {
