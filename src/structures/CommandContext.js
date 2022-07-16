@@ -14,6 +14,7 @@ module.exports = class CommandContext {
     if (this.message) {
       return this.message.channel.send(content)
     } else {
+      console.log(interaction)
       return this.interaction.reply(content)
     }
   }
