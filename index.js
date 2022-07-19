@@ -16,17 +16,17 @@ const client = new Client({
 
 var http = require('http'); http.createServer(function (req, res) { res.write("Bot online por ! Darkness#4128"); res.end(); }).listen(8181);
 
-//  process.on(`multipleResolves`, (type, reason, promise) => {
-//      console.log(`erro detectado\n\n` + type, promise, reason)
-//  }) 
-//  process.on(`unhandRejection`, (reason, promise) => {
-//      console.log(`erro detectado\n\n` + reason, promise)
-//  })
-//  process.on(`uncaughtException`, (error, origin) => {
-//      console.log(`erro detectado\n\n` + error, origin)
-//  })
-//  process.on(`uncaughtExceptionMonitor`, (error, origin) => {
-//      console.log(`erro detectado\n\n` + error, origin)
-//  })
+//   process.on(`multipleResolves`, (type, reason, promise) => {
+//       console.log(`erro detectado\n\n` + type, promise, reason)
+//   }) 
+//   process.on(`unhandRejection`, (reason, promise) => {
+//       console.log(`erro detectado\n\n` + reason, promise)
+//   })
+//   process.on(`uncaughtException`, (error, origin) => {
+//       console.log(`erro detectado\n\n` + error, origin)
+//   })
+//   process.on(`uncaughtExceptionMonitor`, (error, origin) => {
+//       console.log(`erro detectado\n\n` + error, origin)
+//   })
 
 client.login(process.env.BOT_TOKEN)

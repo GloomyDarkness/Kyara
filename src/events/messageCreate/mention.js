@@ -9,15 +9,13 @@ module.exports = class extends Event {
     run = (message) => {
 
         let Array = [
-            'Olá 😁, para ver meus comandos utilize [`/`] e clique na minha foto!',
+            'Olá 😁, para ver meus comandos utilize [`/`]e clique na minha foto ou utilize o meu prefixo `!`',
             'Vejo que me marcou, para saber meus comandos utilize [`/`] e clique em minha foto 😉'
         ]
 
 
         let content = Array[(Math.floor(Math.random() * Array.length))]
 
-        if (message.mentions.members.firstKey() === message.client.user.id) return message.channel.send(content).then(msg => {
-            setTimeout(() => msg.delete(), 10000)
-        })
+        if (message.mentions.members.firstKey() === message.client.user.id) return message.channel.send(content)
     }
 }

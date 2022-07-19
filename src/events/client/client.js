@@ -1,5 +1,4 @@
 const Event = require('../../structures/Event')
-const CommandContext = require('../../structures/CommandContext')
 
 module.exports = class extends Event {
     constructor(client) {
@@ -8,7 +7,7 @@ module.exports = class extends Event {
         })
     }
     run = async (message) => {
-        const prefix = process.env.PREFIX;
+        const prefix = process.env.PREFIX
 
         if (message.author.bot) return;
         if (!message.guild) return;
@@ -18,7 +17,9 @@ module.exports = class extends Event {
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const cmd = this.client.commands.find(c => c.name === args[0])
 
+        if (cmd.length === 0) return;
+
         if (cmd)
-            cmd.run(new CommandContext(this.client, message))
+            cmd.run(this.client, message, args)
     }
 }

@@ -27,9 +27,6 @@ module.exports = class extends Event {
                     \`! Darkness#4128\``)
 
                 return member?.send({ embeds: [embed] }).catch(() => console.log("DM bloqueada"))
-
-
-
             }
         }
 

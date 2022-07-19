@@ -1,11 +1,11 @@
 const { MessageEmbed } = require('discord.js')
-const Command = require('../../structures/Command')
+const Command = require('../../structures/slashCommand')
 
 module.exports = class extends Command {
     constructor(client) {
         super(client, {
             name: 'avatar',
-            description:'pegar a cabeça de alguém no minecraft',
+            description: 'pegar a cabeça de alguém no minecraft',
             options: [
                 {
                     type: 'STRING',
@@ -19,17 +19,16 @@ module.exports = class extends Command {
 
     run = (interaction) => {
 
+
         const nick = interaction.options.getString('nickname')
 
         let embed = new MessageEmbed()
-        .setTitle(`🍃 Avatar do minecraft de: ${nick}`)
-        .setImage(`https://mc-heads.net/body/${nick}`)
-        .setColor("#41ffff")
-        .setTimestamp()
+            .setTitle(`🍃 Avatar do minecraft de: ${nick}`)
+            .setImage(`https://mc-heads.net/body/${nick}`)
+            .setColor("#41ffff")
+            .setTimestamp()
 
-        interaction.reply({
-            embeds: [embed], ephemeral: true
-        })
+        interaction.reply({ embeds: [embed], ephemeral: true })
 
     }
 
