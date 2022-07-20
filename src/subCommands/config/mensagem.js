@@ -14,9 +14,9 @@ module.exports = (client, interaction) => {
     })
 
     const embed = new MessageEmbed()
-        .setTitle("📋 RedeShiwu Ticket")
-        .setImage('https://i.imgur.com/0b2oBjf.gif')
-        .setDescription('👋 Olá, eu sou o bot da **RedeShiwu**!\n\n> Bem vindo a área de ticket!\n\nVocê está precisando de ajuda? Caso esteja escolha uma categoria abaixo de acordo com o que precise e irei criar um canal privado com você e os membros da nossa equipe para ajudar-lo.\n\n`Uso de má fé destes canais será resultado em punição`')
+        .setTitle("📋 Lucii Ticket")
+        .setImage('https://i.imgur.com/TZHjxXy.gif')
+        .setDescription('👋 Olá, eu sou o bot **Luci**!\n\n> Bem vindo a área de ticket!\n\nVocê está precisando de ajuda? Caso esteja escolha uma categoria abaixo de acordo com o que precise e irei criar um canal privado com você e os membros da nossa equipe para ajudar-lo.\n\n`Uso de má fé destes canais será resultado em punição`')
         .setColor('BLUE')
 
     const menus = ticketCategories.map(c => c.menu)

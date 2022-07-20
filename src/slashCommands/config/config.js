@@ -5,6 +5,7 @@ module.exports = class extends Command {
         super(client, {
             name: 'configurar',
             description: 'Configurar dados do servidor no bot.',
+            cooldown: 15,
             options: [
                 {
                     type: 'SUB_COMMAND_GROUP',

@@ -108,8 +108,6 @@ module.exports = class extends Event {
 
                     collector.on('collect', l => {
 
-                        console.log(l.content)
-
                         let a = parseInt(l.content)
 
                         l.delete()

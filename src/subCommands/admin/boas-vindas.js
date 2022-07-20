@@ -23,7 +23,7 @@ module.exports = async (client, interaction) => {
     let embed = new MessageEmbed()
         .setTitle('Lucii Menu')
         .setDescription(`\`•\` Olá, seja bem vindo ao menu de \`boas-vindas\` da Lucii! <:winkk:795332180473544714>\n\n <a:concluido:795402598345474108> Ofereço à você o sistema de boas-vindas \`customizável\`\n\n\`\`\`Configure do jeito que você deseja!\`\`\`\n\nO sistema consiste em **você definir** o canal que a mensagem será enviada, o texto entre outras coisas!\n\n> <a:setaaa:796075080542584912> Utilize os botões abaixo para fazer a configuração!`)
-        .setImage('https://i.imgur.com/FfeUjSb.gif')
+        .setImage('https://i.imgur.com/i7SJjLU.gif')
         .setColor('RED')
 
     interaction.reply({ embeds: [embed], components: [row], ephemeral: true })
