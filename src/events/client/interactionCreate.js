@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js')
 const Event = require('../../structures/Event')
 const delay = ms => new Promise(res => setTimeout(res, ms));
 const { guilds } = require("../../database/models/Models")
@@ -189,6 +190,10 @@ module.exports = class extends Event {
 
                         if (canal.type !== "GUILD_TEXT") return interaction.channel.send("Erro ao definir canal, você precisa mencionar um canal de TEXTO").then(msg => setTimeout(() => msg.delete(), 4000))
 
+                        server.welcome.channel = canal.id
+                        server.markModified("welcome")
+                        server.save()
+
                         interaction.channel.send('Sucesso! canal de boas vindas definido em ' + canal.toString()).then(msg => { setTimeout(() => msg.delete(), 10000) })
                     })
 
@@ -198,6 +203,37 @@ module.exports = class extends Event {
                         })
                     })
 
+                    break;
+
+                case interaction.user.id + ' counter-members':
+
+                    interaction.update({})
+
+                    const perguntas = ['Olá 👋\n> <:settings:786084932560224336> mencione ou insira o id de um canal.', 'insira a mensagem que deseja']
+                    let filterCounter = m => m.author.id === interaction.user.id
+                    const counterCollector = interaction.channel.createMessageCollector({ filter: filterCounter, max: perguntas.length, time: 5 * 60 * 60 })
+                    const respostas = []
+
+                    interaction.channel.send({ content: perguntas[0] }).then(msg => {
+
+                        counterCollector.on('collect', (result) => {
+                            respostas.push(result.content)
+                            msg.edit(perguntas[respostas.length])
+                        })
+                        counterCollector.on('end', (collected, reason) => {
+                            for (let i = 0; i < respostas.length; i++) {
+                                console.log(respostas[i])
+                            }
+
+                            let channelCounter = respostas[0].replace("<#", "").replace(">", "") || this.client.channels.cache.get(respostas[1])
+
+
+                            interaction.channel.send({
+                                content: `${respostas[1].replace(/(<a?)?:\w+:(\d{18})>?/g, String(interaction.guild.emojis.cache.get('$2')).toString())
+                                    }`
+                            })
+                        })
+                    })
                     break;
             }
         }

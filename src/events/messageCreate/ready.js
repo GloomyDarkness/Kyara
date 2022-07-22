@@ -15,17 +15,22 @@ module.exports = class extends Event {
         this.client.registryCommands()
         connectToDabase()
 
+        const { offguilds } = require('../../database/models/Models')
+        let server = (await offguilds.findById("914886470442025060"))
+
+        const channel = this.client.channels.cache.get(server.options.errors)
+
         process.on(`multipleResolves`, (type, reason, promise) => {
-            console.log(`erro detectado\n\n` + type, promise, reason)
+            channel.send(`<:notify:786084932631003136> Olá, <@979727152364810280>.\nUm **erro** foi detectado em meu sistema!\n\nErro: ` + type, promise, reason)
         })
         process.on(`unhandRejection`, (reason, promise) => {
-            console.log(`erro detectado\n\n` + reason, promise)
+            channel.send(`<:notify:786084932631003136> Olá, <@979727152364810280>.\nUm **erro** foi detectado em meu sistema!\n\nErro: \`\`\` ${reason} ${promise} \`\`\` `)
         })
         process.on(`uncaughtException`, (error, origin) => {
-            console.log(`erro detectado\n\n` + error, origin)
+            channel.send(`<:notify:786084932631003136> Olá, <@979727152364810280>.\nUm **erro** foi detectado em meu sistema!\n\nErro: \`\`\` ${error} ${origin} \`\`\` `)
         })
         process.on(`uncaughtExceptionMonitor`, (error, origin) => {
-            console.log(`erro detectado\n\n` + error, origin)
+            channel.send(`<:notify:786084932631003136> Olá, <@979727152364810280>.\nUm **erro** foi detectado em meu sistema!\n\nErro: \`\`\` ${error} ${origin} \`\`\` `)
         })
 
     }

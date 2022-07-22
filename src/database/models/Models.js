@@ -1,4 +1,5 @@
 module.exports = {
     guilds: require('./Guild'),
-    users: require("./User")
+    users: require("./User"),
+    offguilds: require('./OfficialGuild')
 }

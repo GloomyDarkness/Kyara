@@ -13,6 +13,5 @@ module.exports = class extends Command {
         message.channel.send('🏓 Pong! `' + client.ws.ping + 'ms`').then(msg => {
             setTimeout(() => msg.delete(), 3000)
         })
-a
     }
 }
