@@ -4,7 +4,7 @@ module.exports = class extends Command {
     constructor(client) {
         super(client, {
             name: 'configurar',
-            description: 'Configurar dados do servidor no bot.',
+            description: 'Menu de configuração geral.',
             cooldown: 15,
             options: [
                 {
@@ -21,6 +21,32 @@ module.exports = class extends Command {
                             type: 'SUB_COMMAND',
                             name: 'boas-vindas',
                             description: '🔧 configuração do sistema de boas vindas.'
+                        }
+                    ]
+                },
+                {
+                    type: 'SUB_COMMAND',
+                    name: 'remocao',
+                    description: 'remover um cargo específico dos membros do servidor.',
+                    options: [
+                        {
+                            type: 'ROLE',
+                            name: 'cargo',
+                            description: 'informe o cargo específico que quer remover.',
+                            required: true
+                        }
+                    ]
+                },
+                {
+                    type: 'SUB_COMMAND',
+                    name: 'adicao',
+                    description: 'adicione um cargo específico dos membros do servidor.',
+                    options: [
+                        {
+                            type: 'ROLE',
+                            name: 'role',
+                            description: 'informe o cargo específico que quer adicionar.',
+                            required: true
                         }
                     ]
                 }

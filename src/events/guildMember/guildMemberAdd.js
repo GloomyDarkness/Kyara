@@ -35,6 +35,12 @@ module.exports = class extends Event {
             member.roles.add(role)
         }
 
+        if (server.welcome.channelM.channel) {
+            const channelM = this.client.channels.cache.get(server.welcome.channelM.channel)
+            const channelMessage = server.welcome.channelM.message.replace("{membros}", member.guild.memberCount)
+            channelM.setName(channelMessage)
+        }
+
         if (server.welcome.channel) {
             const canal = this.client.channels.cache.get(server.welcome.channel)
 

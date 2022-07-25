@@ -13,6 +13,9 @@ module.exports = class extends Command {
     }
     run = async (client, message, args) => {
 
+        if (!message.member.permissions.has('MANAGE_GUILD')) return message.reply({ content: 'Você não tem permissão para utilizar este comando!' })
+        if (!message.guild.me.permissions.has('MANAGE_GUILD')) return message.reply({ content: 'Eu não tenho permissão para executar esta ação!' })
+
         let argumentss = args.slice(1).join(' ')
 
         switch (argumentss.toLowerCase()) {

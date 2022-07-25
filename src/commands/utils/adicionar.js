@@ -1,6 +1,7 @@
 const Command = require('../../structures/Command')
 const Discord = require('discord.js')
-
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const delaye = 500
 
 module.exports = class extends Command {
     constructor(client) {
@@ -13,25 +14,40 @@ module.exports = class extends Command {
     }
     run = async (client, message, args) => {
 
+        if (!message.member.permissions.has('MANAGE_GUILD')) return message.reply({ content: 'Você não tem permissão para utilizar este comando!' })
+        if (!message.guild.me.permissions.has('MANAGE_GUILD')) return message.reply({ content: 'Eu não tenho permissão para executar esta ação!' })
+
         let argumentss = args.slice(1).join(' ')
 
         if (argumentss.startsWith('emoji')) {
 
-            for (const emojis of args) {
-                const getEmoji = Discord.Util.parseEmoji(emojis)
+            let embed = new Discord.MessageEmbed()
+                .setTitle('Emojis adicionados')
+                .setColor('#fc0317')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true, size: 2048 }))
 
+            let emojiArray = await addEmoji(args.slice(1))
+            embed.addFields(emojiArray)
+            await message.channel.send({ embeds: [embed] })
+
+        }
+
+
+
+        async function addEmoji(emoji_array) {
+            let array_final = []
+            for (const emojis of emoji_array) {
+                const getEmoji = Discord.Util.parseEmoji(emojis)
                 if (getEmoji.id) {
                     const emojiType = getEmoji.animated ? '.gif' : '.png'
                     const emojiURL = `https://cdn.discordapp.com/emojis/${getEmoji.id + emojiType}?size=40&quality=lossless`
 
-                    message.guild.emojis
-                        .create(emojiURL, getEmoji.name).then((emoji) => {
-                            message.channel.send(`<a:concluido:795402598345474108> Sucesso! o emoji ${emoji} foi adicionado com o nome de: \`${emoji.name}\` com sucesso no servidor.`)
-                        })
+                    await delay(delaye)
+                    let emoji = await message.guild.emojis.create(emojiURL, getEmoji.name)
+                    array_final.push({ name: `${emoji.name} adicionado!`, value: `Emoji: ${emoji}` })
                 }
             }
-
+            return array_final;
         }
-
     }
 }

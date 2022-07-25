@@ -39,7 +39,7 @@ module.exports = class extends Event {
 
                     switch (cmd.cooldown > time) {
                         case true:
-                            interaction.reply(`Olá, você tem que esperar \`${rest}\` para usar o comando novamente`)
+                            interaction.reply(`Olá, você tem que esperar \`${rest}\` para usar o comando novamente`).then(msg => setTimeout(msg.deleteReply(), 5000))
                             return
                         case false:
                             user.commands.find(i => i.name === cmd.name).cooldown = Date.now()
@@ -221,17 +221,21 @@ module.exports = class extends Event {
                             msg.edit(perguntas[respostas.length])
                         })
                         counterCollector.on('end', (collected, reason) => {
-                            for (let i = 0; i < respostas.length; i++) {
-                                console.log(respostas[i])
-                            }
+                            for (let i = 0; i < respostas.length; i++) { }
 
-                            let channelCounter = respostas[0].replace("<#", "").replace(">", "") || this.client.channels.cache.get(respostas[1])
+                            let channelCounter = respostas[0].replace("<#", "").replace(">", "") || this.client.channels.cache.get(respostas[1]).id
 
+                            const channelM = this.client.channels.cache.get(channelCounter)
 
-                            interaction.channel.send({
-                                content: `${respostas[1].replace(/(<a?)?:\w+:(\d{18})>?/g, String(interaction.guild.emojis.cache.get('$2')).toString())
-                                    }`
-                            })
+                            if (!channelM) return interaction.channel.send("Insira um canal válido")
+
+                            server.welcome.channelM.channel = channelCounter
+                            server.welcome.channelM.message = respostas[1]
+                            server.markModified('channelM')
+                            server.save()
+
+                            interaction.channel.send("O contador foi definido!\n **Mensagem:** " + server.welcome.channelM.message)
+
                         })
                     })
                     break;

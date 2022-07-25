@@ -1,5 +1,4 @@
 const Event = require('../../structures/Event')
-const { guilds } = require("../../database/models/Models")
 const { users } = require('../../database/models/Models')
 
 module.exports = class extends Event {
@@ -40,7 +39,7 @@ module.exports = class extends Event {
 
                 switch (cmd.cooldown > time) {
                     case true:
-                        message.channel.send(`Olá, você tem que esperar \`${rest}\` para usar o comando novamente`)
+                        message.channel.send(`Olá, você tem que esperar \`${rest}\` para usar o comando novamente`).then(msg => setTimeout(msg.delete(), 5000))
                         return
                     case false:
                         user.commands.find(i => i.name === cmd.name).cooldown = Date.now()

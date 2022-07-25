@@ -19,6 +19,7 @@ module.exports = class extends Command {
     }
 
     run = (interaction) => {
+        
         if (interaction.user.id != '785476244204421140') return interaction.reply({ content: process.env.PERMISSIONS, ephemeral: true })
         const search = interaction.options.getString('código')
         const { inspect } = require("util");

@@ -5,7 +5,11 @@ const guildSchema = new Schema({
     welcome: {
         activated: Boolean,
         channel: String,
-        role: String
+        role: String,
+        channelM: {
+            message: String,
+            channel: String
+        }
     },
     antibot: {
         activated: Boolean,
